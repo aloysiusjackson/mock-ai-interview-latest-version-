@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock AI Interview | Premium Preparation Dashboard</title>
+    <!-- Custom CSS Styles -->
+    <link rel="stylesheet" href="frontend/css/styles.css">
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Dynamic Decorative background gradients -->
+    <div class="bg-gradient-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Main Loader view -->
+    <div class="loader-view" id="loader-view">
+        <div class="pulse-spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+        <div class="loader-text">
+            <h2>Analyzing Responses</h2>
+            <p id="loader-text-detail">Processing your answers with the AI feedback evaluator...</p>
+        </div>
+    </div>
+
+    <!-- Primary Layout Container -->
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-logo">
+                    <!-- SVG logo representing Interview AI speech/voice -->
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.5h-2v-2h2v2zm0-4.5h-2v-5h2v5zm4 4.5h-2v-5h2v5zm0-6.5h-2v-3h2v3z"/>
+                    </svg>
+                </div>
+                <span class="brand-name">Interview.AI</span>
+            </div>
+
+            <!-- Mobile Menu Hamburger Button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <path d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z" fill="currentColor"/>
+                </svg>
+            </button>
+
+            <!-- Navigation Menu -->
+            <nav class="mobile-nav" id="mobile-nav">
+                <ul class="nav-menu">
+            <li class="nav-item active">
+                <a href="#dashboard-view" class="nav-link">
+                    <!-- Dashboard Icon -->
+                    <svg width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#scoreboard-view" class="nav-link">
+                    <!-- Score Board Icon -->
+                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M9 8h2v8H9zm4 2h2v6h-2zm-8 2h2v4H5z"/><path d="M19 10h2v4h-2z"/></svg>
+                    Score Board
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#history-view" class="nav-link">
+                    <!-- History Icon -->
+                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Practice Logs
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#assessment-view" class="nav-link">
+                    <!-- Assessment Icon -->
+                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Skill Assessment
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#resources-view" class="nav-link">
+                    <!-- Resources Icon -->
+                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+                    Resources & Tips
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#achievements-view" class="nav-link">
+                    <!-- Achievements Icon -->
+                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 15l-2 5 2-1 2 1-2-5z"/><path d="M12 2a7 7 0 00-7 7c0 2.38 1.19 4.47 3 5.74V17h8v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 00-7-7z"/></svg>
+                    Achievements
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#settings-view" class="nav-link">
+                    <!-- Settings Icon -->
+                    <svg width="24" height="24" viewBox="0 0 24 22"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 01.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.32 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                    Settings
+                </a>
+            </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile-preview">
+                    <div class="avatar" id="user-avatar-tag">U</div>
+                    <div class="user-info-text">
+                        <div class="username">Loading...</div>
+                        <div class="userrole">Software Engineer</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Pane -->
+        <main class="main-content">
+            
+            <!-- TOP BAR -->
+            <header class="topbar">
+                <div class="page-title">
+                    <h1 id="topbar-view-title">Mock AI Interview</h1>
+                    <p id="topbar-view-desc">Polish your responses and master behavioral and technical roles.</p>
+                </div>
+            </header>
+
+            <!-- ================= VIEW 1: DASHBOARD ================= -->
+            <section class="content-view active" id="dashboard-view">
+                
+                <div class="grid-container">
+                    
+                    <!-- Core Stats Widgets -->
+                    <div class="metric-row">
+                        <div class="card metric-card">
+                            <div class="metric-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 20h9M3 20v-8c0-2.2 1.8-4 4-4h10c2.2 0 4 1.8 4 4v8M3 12a9 9 0 0 1 18 0"/></svg>
+                            </div>
+                            <div class="metric-details">
+                                <span class="metric-val" id="stat-total-interviews">0</span>
+                                <span class="metric-label">Completed Sessions</span>
+                            </div>
+                        </div>
+                        <div class="card metric-card">
+                            <div class="metric-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            </div>
+                            <div class="metric-details">
+                                <span class="metric-val" id="stat-avg-score">0%</span>
+                                <span class="metric-label">Average Score</span>
+                            </div>
+                        </div>
+                        <div class="card metric-card">
+                            <div class="metric-icon">
+                                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4 12 14.01l-3-3"/></svg>
+                            </div>
+                            <div class="metric-details">
+                                <span class="metric-val" id="stat-rating">Beginner</span>
+                                <span class="metric-label">Skill Level</span>
+                            </div>
+                        </div>
+                        <div class="card metric-card">
+                            <div class="metric-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3zM19 10v1a7 7 0 0 1-14 0v-1"/></svg>
+                            </div>
+                            <div class="metric-details">
+                                <span class="metric-val" id="stat-avg-fillers">0</span>
+                                <span class="metric-label">Avg Filler Words</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Configuration Panel -->
+                    <div class="card setup-interview-panel">
+                        <div class="card-header-flex">
+                            <h3>Configure Interview</h3>
+                        </div>
+                        
+                        <!-- Option 1: Default Role Selection -->
+                        <div class="interview-option-section" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-glass);">
+                            <h4 style="font-size: 1rem; margin-bottom: 0.75rem; color: var(--text-secondary);">
+                                <span style="display: inline-block; width: 24px; height: 24px; background: var(--primary); color: white; text-align: center; line-height: 24px; border-radius: 50%; margin-right: 0.5rem;">1</span>
+                                Choose Your Role
+                            </h4>
+                            <div class="form-group">
+                                <label class="form-label" for="interview-role-select">Target Industry Role</label>
+                                <select class="form-select" id="interview-role-select">
+                                    <option value="Software Engineer">💻 Software Engineer</option>
+                                    <option value="Product Manager">📋 Product Manager</option>
+                                    <option value="Data Analyst">📊 Data Analyst</option>
+                                    <option value="Sales Executive">📈 Sales Executive</option>
+                                    <option value="Marketing Manager">📣 Marketing Manager</option>
+                                    <option value="HR Manager">👥 HR Manager</option>
+                                    <option value="Financial Analyst">💰 Financial Analyst</option>
+                                    <option value="Operations Manager">⚙️ Operations Manager</option>
+                                    <option value="Customer Support Lead">🎧 Customer Support Lead</option>
+                                    <option value="Healthcare Administrator">🏥 Healthcare Administrator</option>
+                                    <option value="Project Manager">📐 Project Manager</option>
+                                    <option value="Business Analyst">🔍 Business Analyst</option>
+                                    <option value="Teacher/Educator">📚 Teacher/Educator</option>
+                                    <option value="Retail Manager">🏬 Retail Manager</option>
+                                    <option value="Legal Associate">⚖️ Legal Associate</option>
+                                    <option value="Graphic Designer">🎨 Graphic Designer</option>
+                                    <option value="Content Writer">✍️ Content Writer</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary" id="start-interview-btn" style="width: 100%; margin-top: 1rem;">
+                                Start Practice Session
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Option 2: Import Resume -->
+                        <div class="interview-option-section">
+                            <h4 style="font-size: 1rem; margin-bottom: 0.75rem; color: var(--text-secondary);">
+                                <span style="display: inline-block; width: 24px; height: 24px; background: var(--secondary); color: white; text-align: center; line-height: 24px; border-radius: 50%; margin-right: 0.5rem;">2</span>
+                                 Import Your Resume
+                            </h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                                Upload your resume (PDF/DOCX/TXT) to get personalized questions based on your experience.
+                            </p>
+                            <button class="btn btn-secondary" id="import-resume-btn" style="width: 100%; background: rgba(99, 102, 241, 0.1);">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                Import Resume for Custom Questions
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity List -->
+                    <div class="card recent-activity-panel">
+                        <div class="card-header-flex">
+                            <h3>Recent Practice History</h3>
+                        </div>
+                        <div class="activity-list" id="recent-activity-list">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Radar Chart categories breakdown -->
+                    <div class="card chart-container-large">
+                        <div class="card-header-flex">
+                            <h3>Averages Breakdown</h3>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="categoryRadarChart"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ================= VIEW 2: INTERVIEW ROOM ================= -->
+            <section class="content-view" id="interview-view">
+                
+                <div class="interview-grid">
+                    
+                    <div class="interview-stage">
+                        
+                        <!-- Camera frame element -->
+                        <div class="camera-feed-container">
+                            <video class="camera-feed" id="webcam-feed" autoplay muted style="display: none;"></video>
+                            
+                            <!-- Premium Animated Webcam Mock Placeholder - Realistic Video Call UI -->
+                            <div class="camera-placeholder" id="webcam-placeholder">
+                                <!-- Interviewer Avatar Section -->
+                                <div class="interviewer-avatar-section">
+                                    <div class="interviewer-avatar-ring">
+                                        <div class="interviewer-avatar" id="mock-avatar-interview">I</div>
+                                    </div>
+                                    <div class="interviewer-info">
+                                        <span class="interviewer-name" id="interviewer-name">AI Interviewer</span>
+                                        <span class="interviewer-status">Connected • HD</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Connection quality indicator -->
+                                <div class="connection-badge">
+                                    <div class="connection-dot"></div>
+                                    <span>Live</span>
+                                </div>
+                                
+                                <!-- Call timer display -->
+                                <div class="call-timer" id="call-timer">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    <span id="call-duration">00:00</span>
+                                </div>
+
+                                <!-- Wave animation for recording -->
+                                <div class="wave-animation" id="recording-indicator" style="display: none;">
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                </div>
+                                
+                                <!-- Mute/Unmute indicator -->
+                                <div class="mic-status-badge" id="mic-status-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                                    <span>Mic Active</span>
+                                </div>
+                                
+                                <!-- Background gradient overlay -->
+                                <div class="interview-bg-gradient"></div>
+                            </div>
+
+                            <!-- Recording state layout overlay -->
+                            <div class="recording-status" id="recording-state-tag" style="display: none;">
+                                <div class="status-dot"></div>
+                                <span>REC</span>
+                            </div>
+
+                            <!-- Teleprompter Question text -->
+                            <div class="teleprompter-overlay">
+                                <span class="teleprompter-label">Active Question</span>
+                                <p class="teleprompter-text" id="teleprompter-text">Loading question...</p>
+                            </div>
+                        </div>
+
+                        <!-- Audio/Mic Record state buttons controller -->
+                        <div class="interview-controls">
+                            <div class="time-readout">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span id="time-readout">00:00</span>
+                            </div>
+                            
+                            <div class="control-center-btns">
+                                <button class="btn btn-primary" id="record-btn" onclick="interview.toggleRecording()">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                                    Record Answer
+                                </button>
+                                <button class="btn btn-secondary" id="next-q-btn">
+                                    Next Question
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right columns panel trackers -->
+                    <div class="side-panel">
+                        
+                        <div class="card question-tracker-card">
+                            <div class="card-header-flex">
+                                <h3>Session Progress</h3>
+                            </div>
+                            <div class="tracker-list" id="question-tracker-list">
+                                <!-- Tracker elements populated dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Speech transcript visual block -->
+                        <div class="card live-transcript-card">
+                            <div class="card-header-flex">
+                                <h3>Speech Transcript</h3>
+                            </div>
+                            <div class="speech-error-msg" id="speech-error-msg" style="display: none; padding: 0.75rem; margin-bottom: 0.5rem; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; font-size: 0.85rem; color: #ef4444;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0; margin-right: 0.5rem;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                <span id="speech-error-text"></span>
+                            </div>
+                            <textarea class="live-transcript-box" id="live-transcript-text" placeholder="Your speech response will appear here in real-time. You can also type or edit your response here before pressing next..." style="resize: none; width:100%; border:none; outline:none; font-family:inherit;"></textarea>
+                        </div>
+
+                        <!-- Resume Q&A Section - Ask AI questions about your resume -->
+                        <div class="card resume-qa-section" id="resume-qa-section" style="margin-top: 1rem; display: none;">
+                            <div class="card-header-flex" style="margin-bottom: 1rem;">
+                                <h3>Ask About Your Resume</h3>
+                                <button class="btn btn-secondary" id="close-qa-section" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">✕</button>
+                            </div>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.75rem;">
+                                Have questions about your resume or the interview? Ask the AI anything!
+                            </p>
+                            <div class="resume-qa-chat" id="resume-qa-chat" style="max-height: 200px; overflow-y: auto; margin-bottom: 0.75rem;"></div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <input type="text" id="qa-input" class="form-input" placeholder="Type your question here..." style="flex: 1; font-size: 0.9rem; padding: 0.6rem;">
+                                <button class="btn btn-primary" id="ask-qa-btn" style="padding: 0.6rem 1rem;">Ask</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Ask Question Button for Resume Interviews -->
+                        <button class="btn btn-secondary" id="open-qa-btn" style="width: 100%; margin-top: 0.75rem; display: none;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 2-3 4"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            Ask Question About Your Resume
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ================= VIEW 3: DETAILED FEEDBACK ================= -->
+            <section class="content-view" id="feedback-view">
+                
+                <div class="feedback-grid">
+                    
+                    <!-- Left card overall rating -->
+                    <div class="card interview-summary-card">
+                        <h3 id="feedback-role" style="text-align: center;">Software Engineer Results</h3>
+                        <p id="feedback-date" style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Jul 09, 2026</p>
+                        
+                        <div class="radial-progress-wrapper">
+                            <!-- Circular progress SVG -->
+                            <svg class="radial-svg">
+                                <defs>
+                                    <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#6366f1" />
+                                        <stop offset="100%" stop-color="#8b5cf6" />
+                                    </linearGradient>
+                                </defs>
+                                <circle class="radial-bg" cx="80" cy="80" r="70"></circle>
+                                <circle class="radial-fill" id="radial-fill-circle" cx="80" cy="80" r="70"></circle>
+                            </svg>
+                            <div class="radial-text">
+                                <span class="radial-score" id="radial-score-val">0%</span>
+                                <span class="radial-label">Overall Score</span>
+                            </div>
+                        </div>
+
+                        <p class="summary-paragraph" id="feedback-summary">
+                            Evaluating score performance summaries...
+                        </p>
+
+                        <button class="btn btn-primary" id="back-to-dash-btn" style="width: 100%;">
+                            Return to Dashboard
+                        </button>
+                    </div>
+
+                    <!-- Right card review breakdown accordions -->
+                    <div class="card" style="height: fit-content;">
+                        <div class="card-header-flex">
+                            <h3>Question Breakdown & AI Feedback</h3>
+                        </div>
+                        <div class="answers-review-panel" id="answers-review-container">
+                            <!-- Accordions loaded dynamically -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ================= VIEW 4: PRACTICE LOGS HISTORY ================= -->
+            <section class="content-view" id="history-view">
+                
+                <div class="grid-container">
+                    <div class="card history-table-card">
+                        <div class="card-header-flex">
+                            <h3>Complete History Log</h3>
+                        </div>
+                        <div class="history-list-view" id="history-table-body">
+                            <!-- Dynamic history list rendered in JS -->
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ================= VIEW 5: SCORE BOARD ================= -->
+            <section class="content-view" id="scoreboard-view">
+                
+                <div class="grid-container">
+                    
+                    <!-- Score Analytics Trend Chart -->
+                    <div class="card chart-container-large">
+                        <div class="card-header-flex">
+                            <h3>Score Analytics Trend</h3>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="scoreProgressChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Category Breakdown Chart -->
+                    <div class="card chart-container-small">
+                        <div class="card-header-flex">
+                            <h3>Category Performance</h3>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="scoreboardCategoryChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Score Summary Stats -->
+                    <div class="card" style="grid-column: span 4;">
+                        <div class="card-header-flex">
+                            <h3>Score Summary</h3>
+                        </div>
+                        <div id="scoreboard-summary">
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div class="score-summary-item">
+                                    <span style="color: var(--text-muted); font-size: 0.85rem;">Best Score</span>
+                                    <span class="metric-val" id="scoreboard-best" style="color: var(--success);">0%</span>
+                                </div>
+                                <div class="score-summary-item">
+                                    <span style="color: var(--text-muted); font-size: 0.85rem;">Average Score</span>
+                                    <span class="metric-val" id="scoreboard-avg">0%</span>
+                                </div>
+                                <div class="score-summary-item">
+                                    <span style="color: var(--text-muted); font-size: 0.85rem;">Latest Score</span>
+                                    <span class="metric-val" id="scoreboard-latest">0%</span>
+                                </div>
+                                <div class="score-summary-item">
+                                    <span style="color: var(--text-muted); font-size: 0.85rem;">Total Sessions</span>
+                                    <span class="metric-val" id="scoreboard-sessions">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Scores List -->
+                    <div class="card" style="grid-column: span 8;">
+                        <div class="card-header-flex">
+                            <h3>Score History</h3>
+                        </div>
+                        <div id="scoreboard-history-list" class="activity-list">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ================= VIEW 6: SKILL ASSESSMENT ================= -->
+            <section class="content-view" id="assessment-view">
+                <div class="grid-container">
+                    <div class="card" style="grid-column: span 12;">
+                        <div class="card-header-flex">
+                            <h3>Quick Skill Assessment</h3>
+                            <span class="badge badge-primary">Beta</span>
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                            Take a quick 3-question assessment to gauge your current interview readiness level. 
+                            This helps us recommend the right practice difficulty for you.
+                        </p>
+                        <div id="assessment-content">
+                            <div class="assessment-start" id="assessment-start">
+                                <div class="assessment-levels">
+                                    <div class="level-card" data-level="beginner">
+                                        <div class="level-icon">🌱</div>
+                                        <div class="level-name">Beginner</div>
+                                        <div class="level-desc">New to interviews, need foundational practice</div>
+                                    </div>
+                                    <div class="level-card" data-level="intermediate">
+                                        <div class="level-icon">📈</div>
+                                        <div class="level-name">Intermediate</div>
+                                        <div class="level-desc">Some experience, want to refine skills</div>
+                                    </div>
+                                    <div class="level-card" data-level="advanced">
+                                        <div class="level-icon">🏆</div>
+                                        <div class="level-name">Advanced</div>
+                                        <div class="level-desc">Experienced, aiming for senior roles</div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" id="start-assessment-btn" style="width: 100%; margin-top: 1.5rem;">
+                                    Start Assessment
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                </button>
+                            </div>
+                            <div class="assessment-questions" id="assessment-questions" style="display: none;">
+                                <!-- Questions loaded dynamically -->
+                            </div>
+                            <div class="assessment-results" id="assessment-results" style="display: none;">
+                                <!-- Results shown after completion -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= VIEW 6: RESOURCES & TIPS ================= -->
+            <section class="content-view" id="resources-view">
+                <div class="grid-container">
+                    <div class="card" style="grid-column: span 12;">
+                        <div class="card-header-flex">
+                            <h3>Interview Resources & Tips</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="card resource-card" style="grid-column: span 4;">
+                        <div class="resource-icon">📝</div>
+                        <h4 class="resource-title">Common Interview Questions</h4>
+                        <p class="resource-desc">Browse the most frequently asked questions by role, with expert-crafted sample answers.</p>
+                        <button class="btn btn-secondary resource-btn" data-resource="questions">Browse Questions</button>
+                    </div>
+
+                    <div class="card resource-card" style="grid-column: span 4;">
+                        <div class="resource-icon">🎯</div>
+                        <h4 class="resource-title">STAR Method Guide</h4>
+                        <p class="resource-desc">Master the Situation-Task-Action-Result framework for behavioral questions.</p>
+                        <button class="btn btn-secondary resource-btn" data-resource="star">Learn STAR Method</button>
+                    </div>
+
+                    <div class="card resource-card" style="grid-column: span 4;">
+                        <div class="resource-icon">🧠</div>
+                        <h4 class="resource-title">Body Language Tips</h4>
+                        <p class="resource-desc">Non-verbal communication tips to project confidence and professionalism.</p>
+                        <button class="btn btn-secondary resource-btn" data-resource="body-language">View Tips</button>
+                    </div>
+
+                    <div class="card resource-card" style="grid-column: span 4;">
+                        <div class="resource-icon">💡</div>
+                        <h4 class="resource-title">Filler Words Guide</h4>
+                        <p class="resource-desc">Learn to eliminate "um", "uh", "like" and other filler words from your speech.</p>
+                        <button class="btn btn-secondary resource-btn" data-resource="fillers">Reduce Fillers</button>
+                    </div>
+
+                    <div class="card resource-card" style="grid-column: span 4;">
+                        <div class="resource-icon">📊</div>
+                        <h4 class="resource-title">Salary Negotiation</h4>
+                        <p class="resource-desc">Strategies and scripts for negotiating your offer like a pro.</p>
+                        <button class="btn btn-secondary resource-btn" data-resource="salary">Learn Strategies</button>
+                    </div>
+
+                    <div class="card resource-card" style="grid-column: span 4;">
+                        <div class="resource-icon">🎙️</div>
+                        <h4 class="resource-title">Voice & Pace Control</h4>
+                        <p class="resource-desc">Exercises to improve your speaking pace, tone, and vocal clarity.</p>
+                        <button class="btn btn-secondary resource-btn" data-resource="voice">Practice Exercises</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= VIEW 7: ACHIEVEMENTS ================= -->
+            <section class="content-view" id="achievements-view">
+                <div class="grid-container">
+                    <div class="card" style="grid-column: span 12;">
+                        <div class="card-header-flex">
+                            <h3>Achievements & Milestones</h3>
+                            <span class="badge badge-primary" id="achievement-count">0 unlocked</span>
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Complete practice sessions and improve your scores to unlock achievements.
+                        </p>
+                    </div>
+
+                    <div class="card achievement-card" style="grid-column: span 4;" data-achievement="first-interview">
+                        <div class="achievement-icon locked">🎯</div>
+                        <div class="achievement-info">
+                            <h4>First Steps</h4>
+                            <p>Complete your first mock interview</p>
+                        </div>
+                        <div class="achievement-status locked">🔒</div>
+                    </div>
+
+                    <div class="card achievement-card" style="grid-column: span 4;" data-achievement="five-sessions">
+                        <div class="achievement-icon locked">🔥</div>
+                        <div class="achievement-info">
+                            <h4>Getting Serious</h4>
+                            <p>Complete 5 practice sessions</p>
+                        </div>
+                        <div class="achievement-status locked">🔒</div>
+                    </div>
+
+                    <div class="card achievement-card" style="grid-column: span 4;" data-achievement="perfect-score">
+                        <div class="achievement-icon locked">💎</div>
+                        <div class="achievement-info">
+                            <h4>Perfect Score</h4>
+                            <p>Achieve 90%+ on any interview</p>
+                        </div>
+                        <div class="achievement-status locked">🔒</div>
+                    </div>
+
+                    <div class="card achievement-card" style="grid-column: span 4;" data-achievement="speed-demon">
+                        <div class="achievement-icon locked">⚡</div>
+                        <div class="achievement-info">
+                            <h4>Speed Demon</h4>
+                            <p>Complete 3 interviews in one day</p>
+                        </div>
+                        <div class="achievement-status locked">🔒</div>
+                    </div>
+
+                    <div class="card achievement-card" style="grid-column: span 4;" data-achievement="all-rounder">
+                        <div class="achievement-icon locked">🌟</div>
+                        <div class="achievement-info">
+                            <h4>All-Rounder</h4>
+                            <p>Practice 5 different roles</p>
+                        </div>
+                        <div class="achievement-status locked">🔒</div>
+                    </div>
+
+                    <div class="card achievement-card" style="grid-column: span 4;" data-achievement="veteran">
+                        <div class="achievement-icon locked">🏅</div>
+                        <div class="achievement-info">
+                            <h4>Veteran</h4>
+                            <p>Complete 25 practice sessions</p>
+                        </div>
+                        <div class="achievement-status locked">🔒</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= VIEW 8: SETTINGS ================= -->
+            <section class="content-view" id="settings-view">
+                <div class="grid-container">
+                    <div class="card" style="grid-column: span 8;">
+                        <div class="card-header-flex">
+                            <h3>Profile Settings</h3>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="settings-name">Display Name</label>
+                            <input class="form-input" type="text" id="settings-name" placeholder="Your name" value="User">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="settings-role">Default Role</label>
+                            <select class="form-select" id="settings-role">
+                                <option value="Software Engineer">💻 Software Engineer</option>
+                                <option value="Product Manager">📋 Product Manager</option>
+                                <option value="Data Analyst">📊 Data Analyst</option>
+                                <option value="Sales Executive">📈 Sales Executive</option>
+                                <option value="Marketing Manager">📣 Marketing Manager</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="settings-questions">Questions Per Session</label>
+                            <select class="form-select" id="settings-questions">
+                                <option value="3">3 Questions (Quick)</option>
+                                <option value="5" selected>5 Questions (Standard)</option>
+                                <option value="8">8 Questions (Deep Dive)</option>
+                                <option value="10">10 Questions (Full Interview)</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" id="save-settings-btn">Save Settings</button>
+                    </div>
+
+                    <div class="card" style="grid-column: span 4;">
+                        <div class="card-header-flex">
+                            <h3>Preferences</h3>
+                        </div>
+                        <div class="settings-toggle-group">
+                            <div class="settings-toggle-item">
+                                <div>
+                                    <div class="toggle-label">Auto-advance questions</div>
+                                    <div class="toggle-desc">Automatically move to next question after recording</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="setting-auto-advance" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-toggle-item">
+                                <div>
+                                    <div class="toggle-label">Show transcript during recording</div>
+                                    <div class="toggle-desc">Display real-time speech-to-text while answering</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="setting-show-transcript" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-toggle-item">
+                                <div>
+                                    <div class="toggle-label">Dark mode</div>
+                                    <div class="toggle-desc">Toggle dark/light theme (currently dark)</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="setting-dark-mode" checked disabled>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Resume Import Modal -->
+    <div class="resume-import-modal" id="resume-import-modal">
+        <div class="resume-modal-content">
+            <div class="card-header-flex" style="margin-bottom: 1.5rem;">
+                <h3>Import Resume for Custom Interview Questions</h3>
+                <button class="btn btn-secondary" id="close-resume-modal" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">✕ Close</button>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                Upload your resume (PDF, DOCX, or TXT) and our AI will analyze it to generate personalized interview questions based on your experience.
+            </p>
+            <div class="resume-drop-zone" id="resume-drop-zone">
+                <div class="resume-drop-icon">📄</div>
+                <div class="resume-drop-text">Click or drag to upload your resume</div>
+                <input type="file" id="resume-file-input" class="resume-file-input" accept=".pdf,.docx,.txt">
+                <button class="btn btn-primary" id="browse-resume-btn">Browse Files</button>
+            </div>
+            <div class="resume-preview" id="resume-preview" style="display: none;">
+                <div style="font-weight: 600; margin-bottom: 0.5rem;">Resume Analysis Preview:</div>
+                <div id="resume-analysis-text" style="font-size: 0.9rem; color: var(--text-secondary);"></div>
+            </div>
+            <div class="resume-analysis-loader" id="resume-loader" style="display: none;">
+                <div class="pulse-spinner" style="width: 40px; height: 40px;">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+                <span>Analyzing resume and generating questions...</span>
+            </div>
+            <div class="resume-analysis-result" id="resume-result" style="display: none;">
+                <div style="font-weight: 600; margin-bottom: 0.75rem;">Generated Questions:</div>
+                <div class="resume-question-list" id="resume-questions-list"></div>
+                <button class="btn btn-primary" id="start-resume-interview-btn" style="width: 100%; margin-top: 1.5rem;">
+                    Start Interview with These Questions
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Anti-Cheat System -->
+    <script src="frontend/js/anti-cheat.js"></script>
+    <!-- JS Core files -->
+    <script src="frontend/js/api.js"></script>
+    <script src="frontend/js/dashboard.js"></script>
+    <script src="frontend/js/interview.js"></script>
+    <script src="frontend/js/app.js"></script>
+
+</body>

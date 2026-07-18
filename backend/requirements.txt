@@ -1,0 +1,7 @@
+Flask==3.0.3
+Flask-CORS==4.0.1
+python-dotenv==1.0.1
+gunicorn==26.0.0
+google-generativeai
+PyPDF2
+python-docx
