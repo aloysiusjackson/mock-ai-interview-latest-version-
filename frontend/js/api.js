@@ -1,6 +1,8 @@
 const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
     ? 'http://localhost:5000/api' 
-    : '/api';
+    : window.location.hostname.includes('github.io') 
+        ? 'https://mock-ai-interview-backend.onrender.com/api'  // Update to your Render backend URL
+        : '/api';
 
 const api = {
     async getRoles() {

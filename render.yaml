@@ -1,6 +1,13 @@
 services:
   - type: web
-    name: mock-ai-interview
+    name: mock-ai-interview-backend
+    region: oregon
     env: python
     buildCommand: pip install -r backend/requirements.txt
-    startCommand: cd backend && gunicorn app:app --bind 0.0.0.0:$PORT
+    startCommand: python backend/app.py
+    healthCheckPath: /api/roles
+    envVars:
+      - key: GEMINI_API_KEY
+        value: ""
+      - key: FLASK_ENV
+        value: production
