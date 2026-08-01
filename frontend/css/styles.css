@@ -2268,6 +2268,41 @@ body {
         display: none;
     }
     
+    /* Show mobile brand in topbar */
+    .mobile-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .mobile-brand-logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: var(--accent-gradient);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px var(--primary-glow);
+    }
+    
+    .mobile-brand-logo svg {
+        width: 20px;
+        height: 20px;
+        fill: white;
+    }
+    
+    .mobile-brand-name {
+        font-size: 1.2rem;
+        font-weight: 700;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.5px;
+    }
+    
     /* Show floating navigation button on mobile */
     .floating-nav-btn {
         display: flex;
@@ -2287,6 +2322,11 @@ body {
     .brand-logo svg {
         width: 18px;
         height: 18px;
+    }
+    
+    /* Hide original brand on mobile since we show mobile-brand */
+    .sidebar .brand {
+        display: none;
     }
     
     /* Hide sidebar hamburger on mobile - replaced by floating nav button */

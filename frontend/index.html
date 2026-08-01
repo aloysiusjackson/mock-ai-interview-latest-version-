@@ -49,56 +49,42 @@
                 <ul class="nav-menu">
                     <li class="nav-item active">
                         <a href="#dashboard-view" class="nav-link">
-                            <!-- Dashboard Icon -->
                             <svg width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
                             Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#interview-view" class="nav-link">
-                            <!-- Live Interview Icon -->
-                            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-                            Live Interview
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="#history-view" class="nav-link">
-                            <!-- History Icon -->
                             <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             Practice Logs
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#scoreboard-view" class="nav-link">
-                            <!-- Score Board Icon -->
                             <svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M9 8h2v8H9zm4 2h2v6h-2zm-8 2h2v4H5z"/><path d="M19 10h2v4h-2z"/></svg>
                             Score Board
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#assessment-view" class="nav-link">
-                            <!-- Assessment Icon -->
                             <svg width="24" height="24" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             Skill Assessment
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#resources-view" class="nav-link">
-                            <!-- Resources Icon -->
                             <svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
                             Resources & Tips
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#achievements-view" class="nav-link">
-                            <!-- Achievements Icon -->
                             <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 15l-2 5 2-1 2 1-2-5z"/><path d="M12 2a7 7 0 00-7 7c0 2.38 1.19 4.47 3 5.74V17h8v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 00-7-7z"/></svg>
                             Achievements
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#settings-view" class="nav-link">
-                            <!-- Settings Icon -->
                             <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.32 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
                             Settings
                         </a>
@@ -119,6 +105,16 @@
 
         <!-- Main Content Pane -->
         <main class="main-content">
+            
+            <!-- MOBILE BRAND (visible only on mobile) -->
+            <div class="mobile-brand">
+                <div class="mobile-brand-logo">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.5h-2v-2h2v2zm0-4.5h-2v-5h2v5zm4 4.5h-2v-5h2v5zm0-6.5h-2v-3h2v3z"/>
+                    </svg>
+                </div>
+                <span class="mobile-brand-name">Interview.AI</span>
+            </div>
             
             <!-- TOP BAR -->
             <header class="topbar">
@@ -217,7 +213,7 @@
                         <div class="interview-option-section">
                             <h4 style="font-size: 1rem; margin-bottom: 0.75rem; color: var(--text-secondary);">
                                 <span style="display: inline-block; width: 24px; height: 24px; background: var(--secondary); color: white; text-align: center; line-height: 24px; border-radius: 50%; margin-right: 0.5rem;">2</span>
-                                Or Import Your Resume
+                                 Import Your Resume
                             </h4>
                             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
                                 Upload your resume (PDF/DOCX/TXT) to get personalized questions based on your experience.
@@ -230,7 +226,6 @@
                     </div>
 
                      <!-- Recent Activity List -->
-```
                     <div class="card recent-activity-panel">
                         <div class="card-header-flex">
                             <h3>Recent Practice History</h3>
@@ -780,6 +775,91 @@
 
         </main>
 
+    </div>
+
+    <!-- Mobile Navigation - Floating Button (Top Right) -->
+    <button class="floating-nav-btn" id="floating-nav-btn" aria-label="Open navigation menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+    </button>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+
+    <!-- Mobile Navigation Panel (Top Right) -->
+    <div class="mobile-nav-panel" id="mobile-nav-panel">
+        <button class="mobile-nav-close-btn" id="mobile-nav-close-btn" aria-label="Close navigation menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <div class="mobile-nav-brand">
+            <div class="brand-logo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.5h-2v-2h2v2zm0-4.5h-2v-5h2v5zm4 4.5h-2v-5h2v5zm0-6.5h-2v-3h2v3z"/>
+                </svg>
+            </div>
+            <span class="brand-name">Interview.AI</span>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item active">
+                    <a href="#dashboard-view" class="nav-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#history-view" class="nav-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        Practice Logs
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#scoreboard-view" class="nav-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M9 8h2v8H9zm4 2h2v6h-2zm-8 2h2v4H5z"/><path d="M19 10h2v4h-2z"/></svg>
+                        Score Board
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#assessment-view" class="nav-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        Skill Assessment
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#resources-view" class="nav-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+                        Resources & Tips
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#achievements-view" class="nav-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 15l-2 5 2-1 2 1-2-5z"/><path d="M12 2a7 7 0 00-7 7c0 2.38 1.19 4.47 3 5.74V17h8v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 00-7-7z"/></svg>
+                        Achievements
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#settings-view" class="nav-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.32 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                        Settings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-profile-preview">
+                <div class="avatar" id="user-avatar-tag-mobile">U</div>
+                <div class="user-info-text">
+                    <div class="username" id="mobile-username">Loading...</div>
+                    <div class="userrole" id="mobile-userrole">Software Engineer</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Resume Import Modal -->
